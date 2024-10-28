@@ -6,7 +6,7 @@ vidas = 3
 def inicializarJuego():
     print("--------------------------------------------------")
     print(" BIENVENIDO AL JUEGO DE LAS TABLAS DE MULTIPLICAR")
-    print(" VIDAS RESTANTES: ", vidas,)
+    print(" VIDAS DISPONIBLES: ", vidas,)
     print("--------------------------------------------------")
 
 def preguntar_aleatorio():
@@ -20,21 +20,28 @@ def solucionar(primer_operando, segundo_operando, respuesta):
     return 'perdedor'
 
 def ganador(puntuacion):
-    print("¡Correcto!")
+    print("\n¡Correcto!")
     puntuacion += 1
-    print(puntuacion)
-    return
+    return puntuacion
 
 def perdedor(vidas):
-    print("¡Incorrecto")
+    print("\n¡Incorrecto!")
     vidas -= 1
-    print(vidas)
+    return vidas
 
 # INICIO PROGRAMA
 
 inicializarJuego()
-primer_operando, segundo_operando = preguntar_aleatorio()
-print("PREGUNTA: ", primer_operando, "x", segundo_operando, sep="")
-respuesta = int(input("Respuesta: "))
-solucion = solucionar(primer_operando, segundo_operando, respuesta)
-print(solucion)
+while(vidas != 0):
+    primer_operando, segundo_operando = preguntar_aleatorio()
+    print("PREGUNTA: ", primer_operando, "x", segundo_operando, sep="")
+    respuesta = int(input("Respuesta: "))
+    solucion = solucionar(primer_operando, segundo_operando, respuesta)
+    if (solucion == 'ganador'):
+        puntuacion = ganador(puntuacion)
+    else:
+        vidas = perdedor(vidas)
+    print("\nPuntuación:", puntuacion, "\nVidas restantes:", vidas, "\n")
+
+print("RESULTADO FINAL:", puntuacion)
+print("¡Gracias por jugar!")
