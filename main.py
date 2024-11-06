@@ -1,3 +1,5 @@
+### REPOSITORIO ALOJADO EN https://github.com/DGamers-64/tablas-multiplicar-python
+
 import random
 
 #############################################
@@ -65,6 +67,7 @@ def facil(puntuacion: int, vidas: int) -> int:
         else:
             vidas = perdedor(vidas)
         print("\nPuntuación:", puntuacion, "\nVidas restantes:", vidas, "\n")
+        print("--------------------------------------------------")
     return puntuacion
 
 #############################################
@@ -86,11 +89,9 @@ def intermedio(puntuacion: int, vidas: int) -> int:
         else:
             vidas = perdedor(vidas)
         print("\nPuntuación:", puntuacion, "\nVidas restantes:", vidas, "\n")
+        print("--------------------------------------------------")
     return puntuacion
 
-#############################################
-# IN : PUNTUACION Y VIDAS
-# OUT: PUNTUACION
 #############################################
 
 def dificil(puntuacion: int, vidas: int) -> int:
@@ -135,6 +136,7 @@ def dificil(puntuacion: int, vidas: int) -> int:
                     vidas = perdedor(vidas)
         
         print("\nPuntuación:", puntuacion, "\nVidas restantes:", vidas, "\n")
+        print("--------------------------------------------------")
     return puntuacion
 
 #############################################
