@@ -4,7 +4,7 @@ import random
 
 #############################################
 
-def inicializarJuego(vidas: int) -> str:
+def inicializarJuego(vidas: int) -> int:
     print("--------------------------------------------------")
     print(" BIENVENIDO AL JUEGO DE LAS TABLAS DE MULTIPLICAR")
     print(" VIDAS DISPONIBLES: ", vidas,)
@@ -52,13 +52,25 @@ def solucionar(primer_operando: int, segundo_operando: int, operando: int, respu
 
 #############################################
 
+def pregunta_usuario() -> str:
+    funciona = False
+    while(funciona == False):
+        try:
+            respuesta = int(input("Respuesta: "))
+            funciona = True
+        except ValueError:
+            print("Valor NO válido")
+    return respuesta
+
+#############################################
+
 def facil(puntuacion: int, vidas: int) -> int:
     while(vidas != 0):
         primer_operando = random_10()
         segundo_operando = random_10()
 
         print("PREGUNTA: ", primer_operando, "x", segundo_operando, sep="")
-        respuesta = int(input("Respuesta: "))
+        respuesta = pregunta_usuario()
 
         solucion = solucionar(primer_operando, segundo_operando, 3, respuesta)
 
@@ -80,7 +92,7 @@ def intermedio(puntuacion: int, vidas: int) -> int:
         segundo_operando = random_10()
 
         print("PREGUNTA: ", primer_operando, lista_operandos[operando-1], segundo_operando, sep="")
-        respuesta = int(input("Respuesta: "))
+        respuesta = pregunta_usuario()
 
         solucion = solucionar(primer_operando, segundo_operando, operando, respuesta)
         
@@ -115,21 +127,21 @@ def dificil(puntuacion: int, vidas: int) -> int:
         match simbolo_quitar:
             case 1:
                 print("PREGUNTA: ", "?", lista_operandos[operando-1], segundo_operando, "=", resultado, sep="")
-                respuesta = int(input("Respuesta: "))
+                respuesta = pregunta_usuario()
                 if(respuesta == primer_operando):
                     puntuacion = ganador(puntuacion)
                 else:
                     vidas = perdedor(vidas)
             case 2:
                 print("PREGUNTA: ", primer_operando, lista_operandos[operando-1], "?", "=", resultado, sep="")
-                respuesta = int(input("Respuesta: "))
+                respuesta = pregunta_usuario()
                 if(respuesta == segundo_operando):
                     puntuacion = ganador(puntuacion)
                 else:
                     vidas = perdedor(vidas)
             case 3:
                 print("PREGUNTA: ", primer_operando, lista_operandos[operando-1], segundo_operando, "=", "?", sep="")
-                respuesta = int(input("Respuesta: "))
+                respuesta = pregunta_usuario()
                 if(respuesta == resultado):
                     puntuacion = ganador(puntuacion)
                 else:
